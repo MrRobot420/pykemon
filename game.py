@@ -29,7 +29,7 @@ class Game:
 
             self.checkKeyPresses()
 
-            self.win.fill((20, 200, 120))
+            self.win.fill((101, 67, 20))
 
             self.handlePokeballs()  # POKEBALLS
             self.background.draw()  # BACKGROUND
