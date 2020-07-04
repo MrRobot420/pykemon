@@ -31,9 +31,10 @@ class Game:
 
             self.win.fill((20, 200, 120))
 
+            self.handlePokeballs()  # POKEBALLS
             self.background.draw()  # BACKGROUND
             self.player.draw()      # PLAYER
-            self.handlePokeballs()  # POKEBALLS
+            
             
             pygame.display.update()
 
