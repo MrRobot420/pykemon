@@ -30,9 +30,10 @@ class Game:
             self.checkKeyPresses()
 
             self.win.fill((20, 200, 120))
-            self.background.draw()
-            self.player.draw()
-            self.handlePokeballs()
+
+            self.background.draw()  # BACKGROUND
+            self.player.draw()      # PLAYER
+            self.handlePokeballs()  # POKEBALLS
             
             pygame.display.update()
 
@@ -46,17 +47,17 @@ class Game:
         vel = 15
 
         # Check for specific key presses
-        if keys[pygame.K_LEFT] or keys[pygame.K_a]:             
-            self.player.x -= vel
+        if keys[pygame.K_LEFT] or keys[pygame.K_a]:
+            self.moveBackground()
             self.player.rotate(90)
         if keys[pygame.K_RIGHT] or keys[pygame.K_d]:
-            self.player.x += vel
+            self.moveBackground()
             self.player.rotate(270)
         if keys[pygame.K_UP] or keys[pygame.K_w]:
-            self.player.y -= vel
+            self.moveBackground()
             self.player.rotate(0)
         if keys[pygame.K_DOWN] or keys[pygame.K_s]:
-            self.player.y += vel
+            self.moveBackground()
             self.player.rotate(180)
         if keys[pygame.K_SPACE]:
             print('BALL got shot')
@@ -72,6 +73,10 @@ class Game:
             else:
                 pokeball.draw()
                 pokeball.move(10)
+
+    
+    def moveBackground(self):
+        self.background.move(15, self.player.direction)
 
     
 game = Game(900, 900)
