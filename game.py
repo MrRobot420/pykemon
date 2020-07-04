@@ -2,6 +2,7 @@ import pygame
 from infoBox import InfoBox as info
 from player import Player
 from pokeball import Pokeball
+from background import Background
 
 class Game:
     def __init__(self, width, height):
@@ -13,8 +14,11 @@ class Game:
         
         self.player = Player(self.window_width / 2, self.window_height / 2, self.win)
         self.pokeballs = []
+        self.background = Background(self.window_width, self.window_height, self.win)
+
         self.run = True
     
+
     def mainLoop(self):
         while self.run:
             pygame.time.delay(50)  # Clock
@@ -25,15 +29,16 @@ class Game:
 
             self.checkKeyPresses()
 
-            self.win.fill((20, 200, 60))
+            self.win.fill((20, 200, 120))
+            self.background.draw()
             self.player.draw()
-            self.handlePokeballMovement()
+            self.handlePokeballs()
             
             pygame.display.update()
 
 
     def redrawGameWindow(self):
-        self.win.fill(BLACK)
+        self.win.fill((0, 0, 0))
 
 
     def checkKeyPresses(self):
@@ -58,7 +63,7 @@ class Game:
             self.pokeballs.append(Pokeball(self.player, self.win))
 
 
-    def handlePokeballMovement(self):
+    def handlePokeballs(self):
         for pokeball in self.pokeballs:
             ball_outside_window = pokeball.checkBoundaries(self.window_width, self.window_height)
             if ball_outside_window:
