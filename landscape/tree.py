@@ -1,13 +1,13 @@
 import pygame
 import random
-import os
+from helper.helper import loadImage
 
 class Tree(pygame.sprite.Sprite):
 
     def __init__(self, x, y, screen):
         pygame.sprite.Sprite.__init__(self)
 
-        self.original_image = pygame.image.load(os.path.join(os.getcwd(), 'resources/images/Tree.png'))
+        self.original_image = loadImage('resources/images/Tree.png')
         self.image = self.original_image
         self.rect = self.image.get_rect()
         self.screen = screen

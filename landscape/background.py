@@ -1,6 +1,6 @@
 import pygame
 import random
-import os
+from helper.helper import loadImage
 from .grass import Grass
 from .tree import Tree
 
@@ -9,8 +9,8 @@ class Background(pygame.sprite.Sprite):
     def __init__(self, width, height, screen):
         pygame.sprite.Sprite.__init__(self)
 
-        self.grass_image = pygame.image.load(os.path.join(os.getcwd(), 'resources/images/Grass.png'))
-        self.tree_image = pygame.image.load(os.path.join(os.getcwd(), 'resources/images/Tree.png'))
+        self.grass_image = loadImage('resources/images/Grass.png')
+        self.tree_image = loadImage('resources/images/Tree.png')
         self.image_rect = self.grass_image.get_rect()
         self.screen = screen
         self.width = width

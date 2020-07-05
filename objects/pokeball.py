@@ -1,12 +1,12 @@
 import pygame
-import os
+from helper.helper import loadImage
 
 class Pokeball(pygame.sprite.Sprite):
 
     def __init__(self, player, screen):
         pygame.sprite.Sprite.__init__(self)
 
-        self.original_image = pygame.image.load(os.path.join(os.getcwd(), 'resources/images/Pokeball.png'))
+        self.original_image = loadImage('resources/images/Pokeball.png')
         self.image = self.original_image
         self.rect = self.image.get_rect()
         self.screen = screen

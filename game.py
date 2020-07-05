@@ -2,6 +2,7 @@ import pygame
 from menu.infoBox import InfoBox as info
 from objects.player import Player
 from objects.pokeball import Pokeball
+from objects.pokemon import Pokemon
 from landscape.background import Background
 
 class Game:
@@ -15,6 +16,7 @@ class Game:
         self.player = Player(self.window_width / 2, self.window_height / 2, self.win)
         self.pokeballs = []
         self.background = Background(self.window_width, self.window_height, self.win)
+        self.pokemon = ''
 
         self.run = True
     
@@ -34,7 +36,7 @@ class Game:
             self.handlePokeballs()  # POKEBALLS
             self.background.draw()  # BACKGROUND
             self.player.draw()      # PLAYER
-            
+            self.handlePokemon()    # POKEMON
             
             pygame.display.update()
 
@@ -63,6 +65,12 @@ class Game:
         if keys[pygame.K_SPACE]:
             print('BALL got shot')
             self.pokeballs.append(Pokeball(self.player, self.win))
+        if keys[pygame.K_p]:
+            if (self.pokemon == ''):
+                print('POKEMON was spawned')
+                self.pokemon = Pokemon('Pikachu', ['Blitzkugel'], 'ELECTRO', 100, 'funny', self.win, self.window_width, self.window_height, True)
+            else: self.pokemon = ''
+                
 
 
     def handlePokeballs(self):
@@ -74,6 +82,11 @@ class Game:
             else:
                 pokeball.draw()
                 pokeball.move(10)
+
+
+    def handlePokemon(self):
+        if (self.pokemon != ''):
+            self.pokemon.draw()
 
     
     def moveBackground(self):
