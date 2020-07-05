@@ -1,8 +1,8 @@
 import pygame
-from infoBox import InfoBox as info
-from player import Player
-from pokeball import Pokeball
-from background import Background
+from menu.infoBox import InfoBox as info
+from objects.player import Player
+from objects.pokeball import Pokeball
+from landscape.background import Background
 
 class Game:
     def __init__(self, width, height):
